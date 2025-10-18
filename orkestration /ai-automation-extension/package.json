@@ -1,0 +1,108 @@
+{
+  "name": "quantum-ai-automation",
+  "displayName": "Quantum AI Automation",
+  "description": "AI task coordination for The Quantum Self project",
+  "version": "1.0.0",
+  "publisher": "quantum-self",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "quantum.checkAndExecute",
+        "title": "✨ Check CURRENT_TASK.md and Execute",
+        "category": "Quantum AI"
+      },
+      {
+        "command": "quantum.aiCoordinator",
+        "title": "🎯 AI Coordinator - Who's Next?",
+        "category": "Quantum AI"
+      },
+      {
+        "command": "quantum.statusDashboard",
+        "title": "📊 AI Status Dashboard",
+        "category": "Quantum AI"
+      },
+      {
+        "command": "quantum.viewCurrentTask",
+        "title": "📝 View Current Task",
+        "category": "Quantum AI"
+      },
+      {
+        "command": "quantum.viewTaskQueue",
+        "title": "📋 View Task Queue",
+        "category": "Quantum AI"
+      },
+      {
+        "command": "quantum.markComplete",
+        "title": "✅ Mark Task Complete",
+        "category": "Quantum AI"
+      },
+      {
+        "command": "quantum.buildWebsite",
+        "title": "🚀 Build Website",
+        "category": "Quantum AI"
+      },
+      {
+        "command": "quantum.updateLogs",
+        "title": "💾 Update Status Logs",
+        "category": "Quantum AI"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "quantum-ai-automation",
+          "title": "🤖 AI Automation",
+          "icon": "$(robot)"
+        }
+      ]
+    },
+    "views": {
+      "quantum-ai-automation": [
+        {
+          "id": "quantumTaskView",
+          "name": "Current Task",
+          "icon": "$(check)"
+        },
+        {
+          "id": "quantumQueueView",
+          "name": "Task Queue",
+          "icon": "$(list-ordered)"
+        },
+        {
+          "id": "quantumStatusView",
+          "name": "AI Status",
+          "icon": "$(pulse)"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "quantum.checkAndExecute",
+        "key": "ctrl+shift+e",
+        "mac": "cmd+shift+e"
+      },
+      {
+        "command": "quantum.aiCoordinator",
+        "key": "ctrl+shift+a",
+        "mac": "cmd+shift+a"
+      }
+    ]
+  },
+  "scripts": {
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "vsce": "^2.15.0"
+  }
+}

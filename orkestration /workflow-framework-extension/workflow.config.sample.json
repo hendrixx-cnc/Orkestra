@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json.schemastore.org/workflow-framework.json",
+  "currentTask": {
+    "path": "CURRENT_TASK.md",
+    "fields": [
+      { "label": "Status", "regex": "\\*\\*Status:\\*\\*\\s*(.+)" },
+      { "label": "Assigned To", "regex": "\\*\\*Assigned To:\\*\\*\\s*(.+)" },
+      { "label": "Priority", "regex": "\\*\\*Priority:\\*\\*\\s*(.+)" }
+    ]
+  },
+  "taskQueue": {
+    "path": "TASK_QUEUE.json",
+    "type": "json",
+    "list": "queue",
+    "template": "{{statusIcon}} #{{id}} · {{title}}",
+    "statusField": "status",
+    "statusIcons": {
+      "completed": "✅",
+      "in_progress": "🔄",
+      "pending": "⏳"
+    },
+    "revealPath": "file",
+    "limit": 5
+  },
+  "statuses": [
+    {
+      "label": "Copilot",
+      "path": "COPILOT_STATUS.md",
+      "regex": "\\*\\*Status:\\*\\*\\s*(.+)"
+    },
+    {
+      "label": "Claude",
+      "path": "CLAUDE_STATUS.md",
+      "regex": "\\*\\*Status:\\*\\*\\s*(.+)"
+    },
+    {
+      "label": "ChatGPT",
+      "path": "CHATGPT_STATUS.md",
+      "regex": "\\*\\*Status:\\*\\*\\s*(.+)"
+    }
+  ],
+  "commands": [
+    {
+      "label": "Run Build",
+      "command": "npm run build",
+      "cwd": "2_The-Quantum-World"
+    },
+    {
+      "label": "Update Logs",
+      "command": "./auto_update_logs.sh \"Task Title\" \"Brief details\""
+    }
+  ]
+}

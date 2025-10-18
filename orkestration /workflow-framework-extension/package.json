@@ -1,0 +1,96 @@
+{
+  "name": "workflow-framework",
+  "displayName": "Workflow Framework",
+  "description": "Config-driven coordination panels and commands for any project workflow.",
+  "version": "0.1.0",
+  "publisher": "workflow-labs",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Workflow Framework",
+      "properties": {
+        "workflowFramework.configPath": {
+          "type": "string",
+          "default": "workflow.config.json",
+          "description": "Relative or absolute path to the workflow configuration file."
+        },
+        "workflowFramework.autoRefreshInterval": {
+          "type": "number",
+          "default": 15,
+          "minimum": 5,
+          "description": "Number of seconds between automatic refreshes of workflow views."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "workflowFramework.refresh",
+        "title": "🔄 Workflow: Refresh Panels",
+        "category": "Workflow Framework"
+      },
+      {
+        "command": "workflowFramework.openCurrentTask",
+        "title": "📝 Workflow: Open Current Task",
+        "category": "Workflow Framework"
+      },
+      {
+        "command": "workflowFramework.openTaskQueue",
+        "title": "📋 Workflow: Open Task Queue",
+        "category": "Workflow Framework"
+      },
+      {
+        "command": "workflowFramework.runCommand",
+        "title": "🚀 Workflow: Run Configured Command",
+        "category": "Workflow Framework"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "workflow-framework",
+          "title": "Workflow",
+          "icon": "$(organization)"
+        }
+      ]
+    },
+    "views": {
+      "workflow-framework": [
+        {
+          "id": "workflowCurrentTaskView",
+          "name": "Current Task"
+        },
+        {
+          "id": "workflowQueueView",
+          "name": "Task Queue"
+        },
+        {
+          "id": "workflowStatusView",
+          "name": "Statuses"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "workflowFramework.refresh",
+        "key": "ctrl+shift+r",
+        "mac": "cmd+shift+r"
+      }
+    ]
+  },
+  "scripts": {
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "vsce": "^2.15.0"
+  }
+}

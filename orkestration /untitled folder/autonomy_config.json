@@ -1,0 +1,51 @@
+{
+  "autonomy_levels": {
+    "art_assets": 0,
+    "content": 0,
+    "sound": 0,
+    "video": 0,
+    "documentation": 100,
+    "error_checking": 100,
+    "code": 50,
+    "testing": 75
+  },
+  "task_type_mapping": {
+    "Create.*Icon": "art_assets",
+    "Create.*Logo": "art_assets",
+    "Design.*Visual": "art_assets",
+    "Write.*Story": "content",
+    "Generate.*Copy": "content",
+    "Create.*Guide": "content",
+    "Polish.*Manuscript": "content",
+    "Review.*Prompts": "content",
+    ".*Documentation": "documentation",
+    ".*Technical.*Architecture": "documentation",
+    "Error.*Check": "error_checking",
+    "Review.*Quality": "error_checking",
+    "Optimize.*Performance": "code",
+    "Firebase.*Schema": "code",
+    "Testing.*Guide": "testing"
+  },
+  "consultation_rules": {
+    "require_approval_below": 50,
+    "iterate_with_user_below": 75,
+    "fully_autonomous_at": 100
+  },
+  "idle_task_priorities": [
+    "error_checking",
+    "inconsistency_checks",
+    "documentation_review",
+    "code_quality_review",
+    "waiting_for_user_input"
+  ],
+  "notes": {
+    "art_assets": "0% = AI generates and shows you for approval every iteration",
+    "content": "0% = AI writes and shows you for feedback before completion",
+    "sound": "0% = Reserved for future sound asset tasks",
+    "video": "0% = Reserved for future video tasks",
+    "documentation": "100% = AI completes without consultation",
+    "error_checking": "100% = AI performs checks independently",
+    "code": "50% = AI implements but may ask for complex decisions",
+    "testing": "75% = AI creates tests mostly independently"
+  }
+}

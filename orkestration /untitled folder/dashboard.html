@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Orchestration Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 20px;
+        }
+
+        #dashboard {
+            position: fixed;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid #475569;
+            min-width: 320px;
+            max-width: 600px;
+            overflow: hidden;
+            resize: both;
+            z-index: 1000;
+        }
+
+        #dashboard.docked-top-right {
+            top: 20px;
+            right: 20px;
+        }
+
+        #dashboard.docked-top-left {
+            top: 20px;
+            left: 20px;
+        }
+
+        #dashboard.docked-bottom-right {
+            bottom: 20px;
+            right: 20px;
+        }
+
+        #dashboard.docked-bottom-left {
+            bottom: 20px;
+            left: 20px;
+        }
+
+        .dashboard-header {
+            background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%);
+            padding: 12px 16px;
+            cursor: move;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #6d28d9;
+        }
+
+        .dashboard-title {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .dashboard-content {
+            padding: 16px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: rgba(15, 23, 42, 0.5);
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #06b6d4;
+        }
+
+        .ai-section {
+            margin-bottom: 16px;
+        }
+
+        .ai-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .ai-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .ai-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+
+        .ai-icon.copilot { background: #1f6feb; }
+        .ai-icon.claude { background: #d97706; }
+        .ai-icon.chatgpt { background: #10b981; }
+        .ai-icon.gemini { background: #06b6d4; }
+        .ai-icon.grok { background: #f59e0b; }
+
+        .ai-count {
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 4px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .progress-fill.copilot { background: linear-gradient(90deg, #1f6feb 0%, #388bfd 100%); }
+        .progress-fill.claude { background: linear-gradient(90deg, #d97706 0%, #f59e0b 100%); }
+        .progress-fill.chatgpt { background: linear-gradient(90deg, #10b981 0%, #34d399 100%); }
+        .progress-fill.gemini { background: linear-gradient(90deg, #06b6d4 0%, #22d3ee 100%); }
+        .progress-fill.grok { background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%); }
+
+        .task-label {
+            font-size: 11px;
+            color: #cbd5e1;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .overall-progress {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+        }
+
+        .overall-title {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .overall-bar {
+            height: 12px;
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .overall-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #5b21b6 0%, #7c3aed 50%, #06b6d4 100%);
+            transition: width 0.5s ease;
+            border-radius: 6px;
+        }
+
+        .overall-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #cbd5e1;
+        }
+
+        .refresh-time {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 10px;
+            color: #64748b;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+
+        .minimized .dashboard-content {
+            display: none;
+        }
+
+        .minimized {
+            min-width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <div id="dashboard" class="docked-top-right">
+        <div class="dashboard-header" id="dragHandle">
+            <div class="dashboard-title">
+                <span class="pulse-dot"></span>
+                AI ORCHESTRATION
+            </div>
+            <div class="controls">
+                <button class="control-btn" onclick="toggleMinimize()" title="Minimize">−</button>
+                <button class="control-btn" onclick="cycleDock()" title="Change Position">⇄</button>
+                <button class="control-btn" onclick="refresh()" title="Refresh">⟳</button>
+            </div>
+        </div>
+        
+        <div class="dashboard-content">
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Total Tasks</div>
+                    <div class="stat-value" id="totalTasks">20</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Completed</div>
+                    <div class="stat-value" id="completedTasks">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">In Progress</div>
+                    <div class="stat-value" id="inProgressTasks">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Pending</div>
+                    <div class="stat-value" id="pendingTasks">20</div>
+                </div>
+            </div>
+
+            <!-- AI Progress Bars -->
+            <div id="aiSections">
+                <!-- Copilot -->
+                <div class="ai-section">
+                    <div class="ai-header">
+                        <div class="ai-name">
+                            <div class="ai-icon copilot">⚡</div>
+                            Copilot
+                        </div>
+                        <div class="ai-count" id="copilot-count">0/2 tasks</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill copilot" id="copilot-progress" style="width: 0%"></div>
+                    </div>
+                    <div class="task-label">
+                        <span>Technical Implementation</span>
+                        <span id="copilot-percent">0%</span>
+                    </div>
+                </div>
+
+                <!-- Claude -->
+                <div class="ai-section">
+                    <div class="ai-header">
+                        <div class="ai-name">
+                            <div class="ai-icon claude">🎨</div>
+                            Claude
+                        </div>
+                        <div class="ai-count" id="claude-count">0/7 tasks</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill claude" id="claude-progress" style="width: 0%"></div>
+                    </div>
+                    <div class="task-label">
+                        <span>Content & UX</span>
+                        <span id="claude-percent">0%</span>
+                    </div>
+                </div>
+
+                <!-- ChatGPT -->
+                <div class="ai-section">
+                    <div class="ai-header">
+                        <div class="ai-name">
+                            <div class="ai-icon chatgpt">💬</div>
+                            ChatGPT
+                        </div>
+                        <div class="ai-count" id="chatgpt-count">0/9 tasks</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill chatgpt" id="chatgpt-progress" style="width: 0%"></div>
+                    </div>
+                    <div class="task-label">
+                        <span>Content Creation</span>
+                        <span id="chatgpt-percent">0%</span>
+                    </div>
+                </div>
+
+                <!-- Gemini -->
+                <div class="ai-section">
+                    <div class="ai-header">
+                        <div class="ai-name">
+                            <div class="ai-icon gemini">🔥</div>
+                            Gemini
+                        </div>
+                        <div class="ai-count" id="gemini-count">0/1 tasks</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill gemini" id="gemini-progress" style="width: 0%"></div>
+                    </div>
+                    <div class="task-label">
+                        <span>Firebase & Cloud</span>
+                        <span id="gemini-percent">0%</span>
+                    </div>
+                </div>
+
+                <!-- Grok -->
+                <div class="ai-section">
+                    <div class="ai-header">
+                        <div class="ai-name">
+                            <div class="ai-icon grok">🤖</div>
+                            Grok
+                        </div>
+                        <div class="ai-count" id="grok-count">0/0 tasks</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill grok" id="grok-progress" style="width: 0%"></div>
+                    </div>
+                    <div class="task-label">
+                        <span>Research & Media</span>
+                        <span id="grok-percent">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Overall Progress -->
+            <div class="overall-progress">
+                <div class="overall-title">Overall Project Progress</div>
+                <div class="overall-bar">
+                    <div class="overall-fill" id="overall-progress" style="width: 0%"></div>
+                </div>
+                <div class="overall-stats">
+                    <span id="overall-percent">0% Complete</span>
+                    <span id="overall-eta">ETA: Calculating...</span>
+                </div>
+            </div>
+
+            <div class="refresh-time" id="refreshTime">Last updated: Never</div>
+        </div>
+    </div>
+
+    <script>
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+        let xOffset = 0;
+        let yOffset = 0;
+        let dockPosition = 0; // 0: top-right, 1: top-left, 2: bottom-right, 3: bottom-left
+        const dockPositions = ['docked-top-right', 'docked-top-left', 'docked-bottom-right', 'docked-bottom-left'];
+        let isMinimized = false;
+
+        const dashboard = document.getElementById('dashboard');
+        const dragHandle = document.getElementById('dragHandle');
+
+        dragHandle.addEventListener('mousedown', dragStart);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', dragEnd);
+
+        function dragStart(e) {
+            initialX = e.clientX - xOffset;
+            initialY = e.clientY - yOffset;
+
+            if (e.target === dragHandle || dragHandle.contains(e.target)) {
+                // Remove docked position when dragging starts
+                dockPositions.forEach(pos => dashboard.classList.remove(pos));
+                isDragging = true;
+            }
+        }
+
+        function drag(e) {
+            if (isDragging) {
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                xOffset = currentX;
+                yOffset = currentY;
+                setTranslate(currentX, currentY, dashboard);
+            }
+        }
+
+        function dragEnd(e) {
+            initialX = currentX;
+            initialY = currentY;
+            isDragging = false;
+        }
+
+        function setTranslate(xPos, yPos, el) {
+            el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+            el.style.position = 'fixed';
+        }
+
+        function cycleDock() {
+            // Remove current position
+            dockPositions.forEach(pos => dashboard.classList.remove(pos));
+            dashboard.style.transform = '';
+            xOffset = 0;
+            yOffset = 0;
+            
+            // Cycle to next position
+            dockPosition = (dockPosition + 1) % dockPositions.length;
+            dashboard.classList.add(dockPositions[dockPosition]);
+        }
+
+        function toggleMinimize() {
+            isMinimized = !isMinimized;
+            dashboard.classList.toggle('minimized');
+        }
+
+        async function refresh() {
+            try {
+                // Fetch task queue data
+                const response = await fetch('TASK_QUEUE.json');
+                const data = await response.json();
+                
+                if (data && data.queue) {
+                    updateDashboard(data.queue);
+                }
+            } catch (error) {
+                console.error('Error fetching task data:', error);
+                // Use mock data for demonstration
+                updateDashboardWithMockData();
+            }
+        }
+
+        function updateDashboard(tasks) {
+            const total = tasks.length;
+            const completed = tasks.filter(t => t.status === 'completed').length;
+            const inProgress = tasks.filter(t => t.status === 'in_progress').length;
+            const pending = tasks.filter(t => t.status === 'pending').length;
+
+            // Update stats
+            document.getElementById('totalTasks').textContent = total;
+            document.getElementById('completedTasks').textContent = completed;
+            document.getElementById('inProgressTasks').textContent = inProgress;
+            document.getElementById('pendingTasks').textContent = pending;
+
+            // Count tasks per AI
+            const aiTasks = {
+                copilot: tasks.filter(t => t.assigned_to === 'copilot'),
+                claude: tasks.filter(t => t.assigned_to === 'claude'),
+                chatgpt: tasks.filter(t => t.assigned_to === 'chatgpt'),
+                gemini: tasks.filter(t => t.assigned_to === 'gemini'),
+                grok: tasks.filter(t => t.assigned_to === 'grok')
+            };
+
+            // Update each AI section
+            for (const [ai, aiTaskList] of Object.entries(aiTasks)) {
+                const aiTotal = aiTaskList.length;
+                const aiCompleted = aiTaskList.filter(t => t.status === 'completed').length;
+                const aiPercent = aiTotal > 0 ? Math.round((aiCompleted / aiTotal) * 100) : 0;
+
+                document.getElementById(`${ai}-count`).textContent = `${aiCompleted}/${aiTotal} tasks`;
+                document.getElementById(`${ai}-progress`).style.width = `${aiPercent}%`;
+                document.getElementById(`${ai}-percent`).textContent = `${aiPercent}%`;
+            }
+
+            // Update overall progress
+            const overallPercent = total > 0 ? Math.round((completed / total) * 100) : 0;
+            document.getElementById('overall-progress').style.width = `${overallPercent}%`;
+            document.getElementById('overall-percent').textContent = `${overallPercent}% Complete`;
+
+            // Calculate ETA (rough estimate)
+            const remaining = total - completed;
+            const eta = remaining > 0 ? `${Math.ceil(remaining * 0.5)} hours` : 'Complete!';
+            document.getElementById('overall-eta').textContent = `ETA: ${eta}`;
+
+            // Update timestamp
+            const now = new Date().toLocaleTimeString();
+            document.getElementById('refreshTime').textContent = `Last updated: ${now}`;
+        }
+
+        function updateDashboardWithMockData() {
+            // Mock data for demonstration
+            const mockTasks = Array(20).fill(null).map((_, i) => ({
+                id: i + 1,
+                status: i < 3 ? 'completed' : 'pending',
+                assigned_to: ['copilot', 'claude', 'chatgpt', 'gemini', 'grok'][i % 5]
+            }));
+            updateDashboard(mockTasks);
+        }
+
+        // Auto-refresh every 10 seconds
+        setInterval(refresh, 10000);
+
+        // Initial load
+        refresh();
+    </script>
+</body>
+</html>
