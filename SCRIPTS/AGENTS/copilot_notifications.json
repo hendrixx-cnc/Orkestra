@@ -1,0 +1,30 @@
+{
+  "pending_votes": [
+    {
+      "vote_id": "vote_1760814351",
+      "title": "Should we implement context compression for Orkestra files?",
+      "type": "decision",
+      "options": [
+        "yes",
+        "no",
+        "needs_research"
+      ],
+      "domain": "innovation",
+      "deadline": "2025-10-18T20:05:51Z",
+      "votes_cast": 1
+    },
+    {
+      "vote_id": "vote_1760814359",
+      "title": "Two-level compression: 16.78% human-readable + .cdis optimized vs single fully-optimized format?",
+      "type": "decision",
+      "options": [
+        "two_level",
+        "single_optimized",
+        "hybrid"
+      ],
+      "domain": "architecture",
+      "deadline": "2025-10-18T20:05:59Z",
+      "votes_cast": 1
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "vote_id": "vote_1760812733",
+  "proposal": {
+    "type": "decision",
+    "title": "Test democracy engine?",
+    "description": "",
+    "options": [
+      "yes",
+      "no"
+    ],
+    "context": {
+      "domain": "general",
+      "task_id": "test"
+    }
+  },
+  "voting_system": "weighted",
+  "weights": {
+    "claude": 1.0,
+    "chatgpt": 1.0,
+    "gemini": 1.0,
+    "grok": 1.0,
+    "copilot": 1.0
+  },
+  "threshold": 0.5,
+  "deadline": "2025-10-18T19:38:53Z",
+  "status": "closed",
+  "votes": [
+    {
+      "voter": "claude",
+      "option": "yes",
+      "reasoning": "Democracy engine looks great!",
+      "confidence": 0.9,
+      "timestamp": "2025-10-18T18:39:01Z"
+    },
+    {
+      "voter": "chatgpt",
+      "option": "yes",
+      "reasoning": "Testing system",
+      "confidence": 0.9,
+      "timestamp": "2025-10-18T18:39:10Z"
+    },
+    {
+      "voter": "gemini",
+      "option": "yes",
+      "reasoning": "Testing system",
+      "confidence": 0.9,
+      "timestamp": "2025-10-18T18:39:10Z"
+    },
+    {
+      "voter": "grok",
+      "option": "yes",
+      "reasoning": "Testing system",
+      "confidence": 0.9,
+      "timestamp": "2025-10-18T18:39:10Z"
+    },
+    {
+      "voter": "copilot",
+      "option": "yes",
+      "reasoning": "Testing system",
+      "confidence": 0.9,
+      "timestamp": "2025-10-18T18:39:10Z"
+    }
+  ],
+  "result": {
+    "outcome": "passed",
+    "winning_option": "yes",
+    "tallied_at": "2025-10-18T18:39:36Z"
+  },
+  "created_at": "2025-10-18T18:38:53Z",
+  "created_by": "system"
+}

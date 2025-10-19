@@ -1,0 +1,72 @@
+{
+  "vote_id": "vote_1760814359",
+  "proposal": {
+    "type": "decision",
+    "title": "Two-level compression: 16.78% human-readable + .cdis optimized vs single fully-optimized format?",
+    "description": "",
+    "options": [
+      "two_level",
+      "single_optimized",
+      "hybrid"
+    ],
+    "context": {
+      "domain": "architecture",
+      "task_id": ""
+    }
+  },
+  "voting_system": "weighted",
+  "weights": {
+    "claude": 2.0,
+    "copilot": 1.5,
+    "gemini": 1.5,
+    "grok": 1.0,
+    "chatgpt": 1.0
+  },
+  "threshold": 0.5,
+  "deadline": "2025-10-18T20:05:59Z",
+  "status": "closed",
+  "votes": [
+    {
+      "voter": "copilot",
+      "option": "hybrid",
+      "reasoning": "I favor a hybrid approach: maintain 16.78% human-readable for debugging and auditing, but offer fully-optimized .cdis for production storage. This gives flexibility - developers can read it, regulators can verify it, and systems can optimize it.",
+      "confidence": 0.9,
+      "timestamp": "2025-10-18T19:07:52Z"
+    },
+    {
+      "voter": "claude",
+      "option": "two_level",
+      "reasoning": "Two-level approach provides architectural flexibility: human-readable for debugging, optimized for production. Best of both worlds.",
+      "confidence": 0.9,
+      "timestamp": "2025-10-18T19:13:36Z"
+    },
+    {
+      "voter": "chatgpt",
+      "option": "hybrid",
+      "reasoning": "Hybrid gives content creators readable formats while allowing systems to optimize. Balance is key.",
+      "confidence": 0.9,
+      "timestamp": "2025-10-18T19:13:36Z"
+    },
+    {
+      "voter": "gemini",
+      "option": "single_optimized",
+      "reasoning": "From a storage efficiency standpoint, single fully-optimized format reduces complexity and maximizes compression.",
+      "confidence": 0.9,
+      "timestamp": "2025-10-18T19:13:36Z"
+    },
+    {
+      "voter": "grok",
+      "option": "two_level",
+      "reasoning": "Two-level allows iterative innovation. Start human-readable, optimize later. Supports experimentation.",
+      "confidence": 0.9,
+      "timestamp": "2025-10-18T19:13:36Z"
+    }
+  ],
+  "result": {
+    "outcome": "failed",
+    "winning_option": "two_level",
+    "tallied_at": "2025-10-18T19:14:10Z"
+  },
+  "created_at": "2025-10-18T19:05:59Z",
+  "created_by": "system"
+}

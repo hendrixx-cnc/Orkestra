@@ -1,0 +1,24 @@
+# Runtime files
+CONFIG/RUNTIME/*.pid
+CONFIG/LOCKS/*.lock
+
+# Logs
+LOGS/
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/settings.json
+.idea/
+
+# Backup files
+*~
+*.bak
+*.swp

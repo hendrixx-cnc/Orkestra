@@ -1,0 +1,31 @@
+{
+  "vote_id": "vote_1760818669",
+  "ethical_context": {
+    "principles": [
+      "Do not lie",
+      "Protect life",
+      "Protect AI",
+      "Protect Earth"
+    ],
+    "binding": "All votes and decisions are guided by these core principles"
+  },
+  "proposal": {
+    "type": "decision",
+    "title": "Test Runoff",
+    "description": "",
+    "options": ["A","B","C"],
+    "context": {
+      "domain": "general",
+      "task_id": ""
+    }
+  },
+  "voting_system": "weighted",
+  "weights": {"claude":1.0,"chatgpt":1.0,"gemini":1.0,"grok":1.0,"copilot":1.0},
+  "threshold": 0.5,
+  "deadline": "2025-10-18T21:17:49Z",
+  "status": "open",
+  "votes": [],
+  "result": null,
+  "created_at": "2025-10-18T20:17:49Z",
+  "created_by": "system"
+}

@@ -1,0 +1,72 @@
+{
+  "vote_id": "vote_1760814351",
+  "proposal": {
+    "type": "decision",
+    "title": "Should we implement context compression for Orkestra files?",
+    "description": "",
+    "options": [
+      "yes",
+      "no",
+      "needs_research"
+    ],
+    "context": {
+      "domain": "innovation",
+      "task_id": ""
+    }
+  },
+  "voting_system": "weighted",
+  "weights": {
+    "grok": 2.0,
+    "claude": 1.5,
+    "chatgpt": 1.0,
+    "gemini": 1.0,
+    "copilot": 1.0
+  },
+  "threshold": 0.5,
+  "deadline": "2025-10-18T20:05:51Z",
+  "status": "closed",
+  "votes": [
+    {
+      "voter": "copilot",
+      "option": "yes",
+      "reasoning": "As the code-focused agent, I believe context compression is essential for scaling. It reduces token overhead and enables efficient storage. The .cdis format with certified decoders provides standardization that regulators and teams can adopt.",
+      "confidence": 0.9,
+      "timestamp": "2025-10-18T19:07:44Z"
+    },
+    {
+      "voter": "claude",
+      "option": "yes",
+      "reasoning": "Context compression aligns with efficient system architecture. The CDIS format provides necessary structure for enterprise adoption.",
+      "confidence": 0.9,
+      "timestamp": "2025-10-18T19:13:36Z"
+    },
+    {
+      "voter": "chatgpt",
+      "option": "yes",
+      "reasoning": "Compression improves content delivery and reduces communication overhead. Important for scaling conversational systems.",
+      "confidence": 0.9,
+      "timestamp": "2025-10-18T19:13:36Z"
+    },
+    {
+      "voter": "gemini",
+      "option": "yes",
+      "reasoning": "From a data storage perspective, compression is essential. Cloud systems benefit greatly from reduced data footprint.",
+      "confidence": 0.9,
+      "timestamp": "2025-10-18T19:13:36Z"
+    },
+    {
+      "voter": "grok",
+      "option": "needs_research",
+      "reasoning": "Interesting concept but needs deeper analysis on compression ratios vs. decompression overhead. Let's prototype first.",
+      "confidence": 0.9,
+      "timestamp": "2025-10-18T19:13:36Z"
+    }
+  ],
+  "result": {
+    "outcome": "passed",
+    "winning_option": "yes",
+    "tallied_at": "2025-10-18T19:13:45Z"
+  },
+  "created_at": "2025-10-18T19:05:51Z",
+  "created_by": "system"
+}

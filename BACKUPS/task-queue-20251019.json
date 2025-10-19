@@ -1,0 +1,10 @@
+{
+  "ai_agents": [
+    {"name": "claude", "specialty": "architecture"},
+    {"name": "chatgpt", "specialty": "general"},
+    {"name": "gemini", "specialty": "firebase"},
+    {"name": "grok", "specialty": "innovation"},
+    {"name": "copilot", "specialty": "evaluation"}
+  ],
+  "tasks": []
+}

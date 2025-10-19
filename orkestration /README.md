@@ -1,2 +1,0 @@
-# The-Quantum-Self-
-Concise 

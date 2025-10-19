@@ -1,0 +1,81 @@
+{
+  "_comment": "Task Template for Orkestra Multi-AI System",
+  "_description": "Use this template to create new tasks with proper structure",
+  "_usage": "Copy this template and fill in all fields, or use add-task.sh script",
+  
+  "task_id": "task_XXXX",
+  "title": "Short descriptive title (50 chars max)",
+  "description": "Detailed description of what needs to be done. Include context, requirements, acceptance criteria, and any important details.",
+  
+  "type": "code|documentation|content|review|bug_fix|feature|refactor|test|deployment|research",
+  "priority": "critical|high|medium|low",
+  "status": "pending|assigned|in_progress|review|completed|failed|blocked",
+  
+  "assigned_to": "claude|chatgpt|gemini|grok|copilot|auto",
+  "autonomy_level": 0,
+  "_autonomy_guide": "0=requires approval, 50=semi-autonomous, 100=fully autonomous",
+  
+  "estimated_duration": "15m|30m|1h|2h|4h|8h|1d|2d",
+  "actual_duration": null,
+  
+  "dependencies": [],
+  "_dependencies_note": "Array of task_ids that must complete before this task",
+  
+  "input_files": [],
+  "_input_files_note": "Array of file paths needed for this task",
+  
+  "output_files": [],
+  "_output_files_note": "Array of file paths this task will create/modify",
+  
+  "output_directory": "/workspaces/Orkestra/OUTPUT/",
+  "_output_directory_note": "Where task outputs should be saved",
+  
+  "file_links": {
+    "documentation": [],
+    "related_code": [],
+    "references": []
+  },
+  "_file_links_note": "Links to relevant files for quick access",
+  
+  "tags": [],
+  "_tags_note": "Array of tags for categorization: api, frontend, backend, urgent, etc.",
+  
+  "acceptance_criteria": [
+    "Criterion 1: What defines success",
+    "Criterion 2: What must be validated",
+    "Criterion 3: What needs to be tested"
+  ],
+  
+  "context": {
+    "background": "Why this task is needed",
+    "constraints": "Any limitations or requirements",
+    "references": "Links to docs, issues, or other resources"
+  },
+  
+  "peer_review": {
+    "required": true,
+    "reviewer": "auto|claude|chatgpt|gemini|grok|copilot",
+    "review_task_id": null
+  },
+  
+  "retry_info": {
+    "max_retries": 3,
+    "current_retry": 0,
+    "retry_reason": null
+  },
+  
+  "timestamps": {
+    "created_at": null,
+    "assigned_at": null,
+    "started_at": null,
+    "completed_at": null,
+    "updated_at": null
+  },
+  
+  "metadata": {
+    "created_by": "user|system|ai_name",
+    "notes": "",
+    "parent_project": "",
+    "milestone": ""
+  }
+}
