@@ -248,6 +248,51 @@ fi
 
 ---
 
+## FINAL ROUND: EXPORT TO OUTCOMES
+
+After Round N completes and summary is generated:
+
+1. **Final outcomes exported** to permanent record:
+   ```
+   COMMITTEE/MEETINGS/OUTCOMES/
+   ```
+
+2. **Outcome files contain**:
+   - Original question/vote
+   - All round summaries
+   - Final decision/answer
+   - Action items
+   - Timestamp & participants
+   - Link to full response files
+
+3. **Export format**:
+   ```
+   vote-outcome-YYYYMMDD-HASH.md
+   question-outcome-YYYYMMDD-HASH.md
+   ```
+
+4. **Purpose**:
+   - Permanent meeting record
+   - Easy reference without digging through rounds
+   - Exportable for reports/documentation
+   - Audit trail of all decisions
+
+**Example Export**:
+```bash
+# After question completes:
+/COMMITTEE/RESPONSES/question-9f1c2d3e-summary.md
+  ↓
+/COMMITTEE/MEETINGS/OUTCOMES/question-outcome-20251019-9f1c2d3e.md
+
+# After vote completes:
+/COMMITTEE/RESPONSES/vote-a3f8b1c4-summary.md
+  ↓
+/COMMITTEE/MEETINGS/OUTCOMES/vote-outcome-20251019-a3f8b1c4.md
+```
+
+---
+
 **Status**: ✅ READY TO USE
 **Testing**: Ready for demo run
 **Integration**: Needs AI API connections for full automation
+**Outcomes**: Final results exported to MEETINGS/OUTCOMES/ for permanent record
