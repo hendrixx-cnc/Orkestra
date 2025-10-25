@@ -1,6 +1,6 @@
 # Orkestra
 
-> AI orchestration system for managing multi-agent workflows and the Quantum Self product ecosystem
+> AI orchestration system for managing multi-agent workflows 
 
 ## 📋 Repository Structure
 
