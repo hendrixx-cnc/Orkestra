@@ -187,7 +187,7 @@ This system is designed to work with:
 
 ## 📦 The Quantum Self Project
 
-The main product being developed is **The Quantum Self** - a journaling app based on quantum psychology principles. See `DOCS/PRODUCT/master-product-ecosystem.md` for full details.
+ **The Quantum Self** - a book wasa the inspiration for this based on quantum psychology principles. See `DOCS/PRODUCT/master-product-ecosystem.md` for full details.
 
 ## 🔄 Recent Changes
 
@@ -203,7 +203,7 @@ This is a personal project by Todd (hendrixx-cnc), but the AI collaboration syst
 
 ## 📄 License
 
-© 2025 Todd / Elara Solace - All Rights Reserved
+© 2025 Todd Todd Hendricks - All Rights Reserved
 
 ---
 
