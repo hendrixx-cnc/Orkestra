@@ -2,54 +2,15 @@
 
 > AI orchestration system for managing multi-agent workflows 
 
-## 📋 Repository Structure
+Repository Structure
 
 This repository follows a strict naming convention:
 - **Folders**: UPPERCASE (e.g., `DOCS/`, `SCRIPTS/`)
 - **Files**: lowercase-kebab-case (e.g., `readme.md`, `task-queue.json`)
 
-### Directory Organization
-
-```
-/workspaces/Orkestra/
-├── readme.md                    # This file
-├── orkestra-status.md          # Current system status
-├── reorganization-plan.md      # Organization guidelines
-│
-├── DOCS/                       # All documentation
-│   ├── PRODUCT/               # Product documentation & roadmaps
-│   ├── TECHNICAL/             # Technical specifications & architecture
-│   ├── AI-SYSTEM/             # AI collaboration documentation
-│   ├── GUIDES/                # How-to guides and tutorials
-│   └── ARCHIVE/               # Deprecated/historical documents
-│
-├── SCRIPTS/                    # All executable scripts
-│   ├── CORE/                  # Core orchestration (startup, orchestrator)
-│   ├── AI/                    # AI agent scripts
-│   ├── AUTOMATION/            # Task automation & daemons
-│   ├── UTILS/                 # Utility scripts (migration, push, reset)
-│   └── MONITORING/            # System monitoring & resilience
-│
-├── CONFIG/                     # Configuration files
-│   ├── TASK-QUEUES/           # Task queue JSON files
-│   ├── LOCKS/                 # Lock files for coordination
-│   └── RUNTIME/               # Runtime files (PIDs, temp files)
-│
-├── EXTENSIONS/                 # VS Code extensions
-│   ├── AI-AUTOMATION/         # AI automation extension
-│   └── WORKFLOW-FRAMEWORK/    # Workflow framework extension
-│
-├── BACKUPS/                    # Backup files and folders
-│   ├── orkestra_backup_*/     # Timestamped backups
-│   └── untitled-folder-backup/ # Previous unorganized files
-│
-├── LOGS/                       # System logs (orchestrator, monitor, automation)
-│
-└── PROJECTS/                   # Actual project workspaces
-    └── workspaces/            # The Quantum Self and other projects
 ```
 
-## 🚀 Quick Start
+Quick Start
 
 ### Using the Orkestra Command
 
@@ -80,7 +41,7 @@ orkestra list
 orkestra reset
 ```
 
-### Direct Script Access
+Direct Script Access
 
 You can also run scripts directly:
 
@@ -99,7 +60,7 @@ You can also run scripts directly:
 ./SCRIPTS/CORE/orkestra-start.sh
 ```
 
-### Safety System
+Safety System
 
 **Pre-Task Validator**: Validates before task execution (10 checks)
 ```bash
@@ -128,7 +89,7 @@ You can also run scripts directly:
 ./SCRIPTS/MONITORING/orkestra-resilience.sh
 ```
 
-### Task Management
+Task Management
 
 **View task queue:**
 ```bash
@@ -139,7 +100,7 @@ cat CONFIG/TASK-QUEUES/task-queue.json
 ```bash
 ./SCRIPTS/AUTOMATION/start-autonomy-system.sh
 ```
-## 📚 Key Documentation
+Key Documentation
 
 - **Quick Start Guide**: `DOCS/GUIDES/quick-start-autopilot.md`
 - **Launch Guide**: `DOCS/GUIDES/orkestra-launch-guide.md`
@@ -156,19 +117,19 @@ This system is designed to work with:
 - Grok (xAI)
 
 
-## 🔄 Recent Changes
+Recent Changes
 
 See `reorganization-plan.md` for details on the recent repository reorganization that created this clean structure.
 
-## 📝 Status
+Status
 
 Current system status can be found in `orkestra-status.md`
 
-## 🤝 Contributing
+Contributing
 
 This is a personal project by Todd (hendrixx-cnc), but the AI collaboration system is designed to be extensible and could be adapted for other use cases.
 
-## 📄 License
+License
 
 © 2025 Todd Todd Hendricks - All Rights Reserved
 
