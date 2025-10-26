@@ -139,44 +139,14 @@ cat CONFIG/TASK-QUEUES/task-queue.json
 ```bash
 ./SCRIPTS/AUTOMATION/start-autonomy-system.sh
 ```
-
 ## 📚 Key Documentation
 
-- **Product Overview**: `DOCS/PRODUCT/master-product-ecosystem.md`
 - **Quick Start Guide**: `DOCS/GUIDES/quick-start-autopilot.md`
 - **Launch Guide**: `DOCS/GUIDES/orkestra-launch-guide.md`
 - **Task Management**: `DOCS/GUIDES/task-management-guide.md`
 - **System Rules**: `DOCS/TECHNICAL/system-rules.md`
 - **Naming Conventions**: `DOCS/TECHNICAL/naming-convention.md`
 
-## 🎯 What is Orkestra?
-
-Orkestra is a multi-AI orchestration system that coordinates multiple AI agents (Claude, GPT, Gemini, Grok, Copilot) to work together on complex tasks. It includes:
-
-- **Task Queue System**: Manages and distributes tasks across AI agents
-- **Lock Mechanism**: Prevents conflicts when multiple AIs work simultaneously
-- **Democracy Engine**: Allows AIs to vote on decisions
-- **Automation Scripts**: Runs tasks autonomously with human oversight
-- **Monitoring & Resilience**: Ensures system stability and recovery
-
-## 🛠️ Main Components
-
-### Core Orchestration
-- `orchestrator.sh` - Main orchestration logic
-- `startup.sh` - System initialization
-- `orkestra-start.sh` - Quick start script
-
-### Automation
-- `task-coordinator.sh` - Coordinates task distribution
-- `universal-daemon.sh` - Universal background task runner
-- `smart-task-selector.sh` - Intelligently assigns tasks to AIs
-
-### Utilities
-- `reset-orkestra.sh` - Reset system to clean state
-- `push-orkestra-to-github.sh` - Push changes to repository
-- `migrate-orkestra-with-hacs.sh` - Migration tools
-
-## 🤖 AI Integration
 
 This system is designed to work with:
 - GitHub Copilot (primary)
@@ -185,9 +155,6 @@ This system is designed to work with:
 - Gemini (Google)
 - Grok (xAI)
 
-## 📦 The Quantum Self Project
-
- **The Quantum Self** - a book wasa the inspiration for this based on quantum psychology principles. See `DOCS/PRODUCT/master-product-ecosystem.md` for full details.
 
 ## 🔄 Recent Changes
 
