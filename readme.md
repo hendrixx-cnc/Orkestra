@@ -2,18 +2,6 @@
 
 > AI orchestration system for managing multi-agent workflows
 
-use with AURA Adaptive Response Universal Audit protocol 
-
-cut bandwith of human to ai conversations by 30% subms latency 
-
-](https://github.com/hendrixx-cnc/AURA)
-
-
-Repository Structure
-
-This repository follows a strict naming convention:
-- **Folders**: UPPERCASE (e.g., `DOCS/`, `SCRIPTS/`)
-- **Files**: lowercase-kebab-case (e.g., `readme.md`, `task-queue.json`)
 
 ```
 
