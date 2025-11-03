@@ -1,10 +1,13 @@
 # Runtime files
-CONFIG/RUNTIME/*.pid
+CONFIG/RUNTIME/
 CONFIG/LOCKS/*.lock
 
-# Logs
+# Framework logs only (project logs stay with projects)
 LOGS/
 *.log
+
+# User projects (each project has its own git repo)
+PROJECTS/
 
 # Temporary files
 *.tmp

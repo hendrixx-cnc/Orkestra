@@ -1,0 +1,2 @@
+[console_scripts]
+orkestra = orkestra.cli:main

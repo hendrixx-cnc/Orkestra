@@ -1,7 +1,4 @@
 {
-  "id": "hacs",
-  "name": "Hacs",
-  "description": "Human Audited Comprsession System",
-  "created": "2025-10-18T17:49:05+00:00",
-  "version": "1.0.0"
+  "name": "test-planning-feature",
+  "path": "/Users/hendrixx./Desktop/test-planning-feature"
 }

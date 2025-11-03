@@ -1,3 +1,46 @@
+Metadata-Version: 2.4
+Name: orkestra-ai
+Version: 1.0.0
+Summary: Multi-AI Task Coordination Platform - Orchestrate Claude, ChatGPT, Gemini, Copilot, and Grok
+Home-page: https://github.com/hendrixx-cnc/Orkestra
+Author: hendrixx-cnc
+Author-email: hendrixx-cnc <contact@example.com>
+License: Apache-2.0
+Project-URL: Homepage, https://github.com/hendrixx-cnc/Orkestra
+Project-URL: Documentation, https://github.com/hendrixx-cnc/Orkestra/tree/main/DOCS
+Project-URL: Repository, https://github.com/hendrixx-cnc/Orkestra
+Project-URL: Bug Tracker, https://github.com/hendrixx-cnc/Orkestra/issues
+Keywords: ai,orchestration,multi-agent,coordination,claude,chatgpt,gemini,copilot,grok,automation,workflow
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Topic :: System :: Distributed Computing
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: click>=8.0.0
+Requires-Dist: rich>=10.0.0
+Requires-Dist: pyyaml>=5.4.0
+Requires-Dist: jinja2>=3.0.0
+Requires-Dist: python-dotenv>=0.19.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0.0; extra == "dev"
+Requires-Dist: pytest-cov>=3.0.0; extra == "dev"
+Requires-Dist: black>=22.0.0; extra == "dev"
+Requires-Dist: flake8>=4.0.0; extra == "dev"
+Requires-Dist: mypy>=0.950; extra == "dev"
+Dynamic: author
+Dynamic: home-page
+Dynamic: requires-python
+
 # 🎼 Orkestra - Multi-AI Task Coordination Platform
 
 [![PyPI version](https://badge.fury.io/py/orkestra-ai.svg)](https://badge.fury.io/py/orkestra-ai)
@@ -20,15 +63,10 @@ pip install orkestra-ai
 
 ```bash
 orkestra new my-ai-project
-# → Project created and planning wizard launches automatically
-# Follow the interactive prompts to define your project
 cd my-ai-project
+cp config/api-keys.env.example config/api-keys.env
+# Edit config/api-keys.env with your API keys
 orkestra start
-```
-
-**Skip planning wizard:**
-```bash
-orkestra new my-ai-project --skip-planning
 ```
 
 ---
@@ -49,20 +87,6 @@ orkestra new my-ai-project --skip-planning
 
 ## 📖 Documentation
 
-### Context Management & Democracy (NEW!)
-- **[Context & Democracy Guide](DOCS/TECHNICAL/CONTEXT_AND_DEMOCRACY.md)** - Complete system documentation
-- **[Quick Reference](DOCS/QUICK-REFERENCE/CONTEXT_DEMOCRACY_QUICK_REF.md)** - Fast reference for AI agents
-- **Recovery System** - AI agents can recover from disconnects/rate limits
-- **Democratic Voting** - Weighted voting with domain expertise
-- **Complete Audit Trail** - Full history of all decisions and actions
-
-### Python Modules
-- **[Python Modules Guide](DOCS/TECHNICAL/PYTHON_MODULES.md)** - Complete API reference
-- **[Quick Reference](DOCS/QUICK-REFERENCE/PYTHON_QUICK_REF.md)** - Code examples & patterns
-- **[Migration Summary](DOCS/TECHNICAL/PYTHON_MIGRATION_SUMMARY.md)** - What's been converted
-- **[Conversion Roadmap](DOCS/TECHNICAL/BASH_TO_PYTHON_ROADMAP.md)** - What's coming next
-
-### General Documentation
 - **[Package Summary](PACKAGE_SUMMARY.md)** - Complete package overview
 - **[Quick Start](QUICKSTART.md)** - Fast setup guide
 - **[Publishing Guide](PUBLISHING.md)** - How to publish to PyPI

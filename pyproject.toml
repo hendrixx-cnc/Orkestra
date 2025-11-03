@@ -1,0 +1,89 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "orkestra-ai"
+version = "1.0.0"
+description = "Multi-AI Task Coordination Platform - Orchestrate Claude, ChatGPT, Gemini, Copilot, and Grok"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "hendrixx-cnc", email = "contact@example.com"}
+]
+keywords = ["ai", "orchestration", "multi-agent", "coordination", "claude", "chatgpt", "gemini", "copilot", "grok", "automation", "workflow"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "Topic :: System :: Distributed Computing",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "click>=8.0.0",
+    "rich>=10.0.0",
+    "pyyaml>=5.4.0",
+    "jinja2>=3.0.0",
+    "python-dotenv>=0.19.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=3.0.0",
+    "black>=22.0.0",
+    "flake8>=4.0.0",
+    "mypy>=0.950",
+]
+
+[project.urls]
+Homepage = "https://github.com/hendrixx-cnc/Orkestra"
+Documentation = "https://github.com/hendrixx-cnc/Orkestra/tree/main/DOCS"
+Repository = "https://github.com/hendrixx-cnc/Orkestra"
+"Bug Tracker" = "https://github.com/hendrixx-cnc/Orkestra/issues"
+
+[project.scripts]
+orkestra = "orkestra.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+orkestra = [
+    "templates/**/*",
+    "templates/**/**/*",
+    "scripts/**/*.sh",
+    "scripts/**/**/*.sh",
+    "config/**/*.json",
+    "config/**/*.env.example",
+]
+
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39', 'py310', 'py311', 'py312']
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --cov=orkestra --cov-report=term-missing"
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
